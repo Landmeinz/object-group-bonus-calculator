@@ -34,7 +34,7 @@ Each **Employee** currently is configured in this way:
 * The `name` property holds the employees name.
 * The `employeeNumber` property has their employee number.
 * The `annualSalary` property contains their base annual salary.
-* The `reviewRating` property contains their review rating.
+* The `reviewRating` property contains their review **rating**.
 
 ## Processing Employee Bonuses
 
