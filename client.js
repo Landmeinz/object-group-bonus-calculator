@@ -103,10 +103,19 @@ const employees = [{
 
 
 
+const MAX_SALARY = 65000;
 
- //console.log('test', bonusAndTotalComp(47000, 5));
+function calcBonuses(){
+  // calc bonus for all employees in array;
+  let bonuses = [];
+  for(let i=0; i<employees.length; i++){
+    let result = calcBonus(employees[i])
+    bonuses.push(result);
+  } return bonuses;
+}
 
-
+let payroll = calcBonuses();
+console.log(payroll);
  
 // function to calc bonuses of all employees in the employees array;
 function calcBonus(employee){
@@ -121,19 +130,19 @@ function calcBonus(employee){
     case 1:
     case 2: 
       console.log('rating below 2; no bonus');
-      baseBonus = 0; // whole percentage
+      baseBonus = 0; // whole percentage;
         break;
     case 3: 
       console.log('review rating of 3');
-      baseBonus = 4; // whole percentage
+      baseBonus = 4; // whole percentage;
         break;
     case 4:
       console.log('review rating of 4');
-      baseBonus = 6; // whole percentage
+      baseBonus = 6; // whole percentage;
        break;
     case 5:
       console.log('review rating of 5');
-      baseBonus = 10; // whole percentage
+      baseBonus = 10; // whole percentage;
        break;
     default:
       alert('error; needs review rating 1-5');
@@ -142,17 +151,17 @@ function calcBonus(employee){
 
   // employee number length; senior status, add 5%; 
   if(employee.employeeNumber.length <= 4){
-    baseBonus += 5; // whole percent
+    baseBonus += 5; // whole percent;
   }
 
   // income adjustment -1% if you make more than 65k 
   if(employee.annualSalary > 65000){
-    baseBonus -= 1; // whole percent
+    baseBonus -= 1; // whole percent;
   }
 
   // checking our baseBonus output to ensure we are not exceeding any max and min;
   if(baseBonus > 13){
-    baseBonus = 13; // whole percent
+    baseBonus = 13; // whole percent;
   } else if(baseBonus < 0){
     baseBonus = 0; // whole percent; no negative percents;
   }
@@ -160,24 +169,11 @@ function calcBonus(employee){
   // employee salary * our percent 
   let totalBonus = employee.annualSalary * (baseBonus/100)
 
+  // returning an object with all of our required information;
   return {
     name: employee.name,
-    bonusPercentage: `${baseBonus}%`, // still in whole percentage
-    totalCompensation: Number(employee.annualSalary) + totalBonus, // annualSalary is a string 
+    bonusPercentage: `${baseBonus}%`, // still in whole percentage;
+    totalCompensation: Number(employee.annualSalary) + totalBonus, // annualSalary is a string;
     totalBonus: totalBonus,
   }
-
-
 }
-
-let result = calcBonus(employees[2]); 
-console.log(result);
-
-
-
-
-
-// * The `name` property should contain the employee's name.
-// * The `bonusPercentage` property should contain the bonus percentage the employee is to receive. See section below for calculation instructions.
-// * The `totalCompensation` property should be the adjusted annual compensation (base annual + bonus)
-// * The `totalBonus` should be the employee's total bonus rounded to the nearest dollar.
